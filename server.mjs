@@ -1,0 +1,1 @@
+import {createServer} from 'node:http';import {readFile} from 'node:fs/promises';createServer(async(_req,res)=>{res.setHeader('content-type','text/html');res.end((await readFile('index.html','utf8')).replaceAll('http://localhost:4100',process.env.API_URL??'http://localhost:4100'));}).listen(Number(process.env.PORT??4101),'0.0.0.0');

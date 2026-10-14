@@ -1,0 +1,1 @@
+import {mkdir,readFile,writeFile} from 'node:fs/promises';await mkdir('dist',{recursive:true});await writeFile('dist/index.html',(await readFile('index.html','utf8')).replaceAll('http://localhost:4100',process.env.API_URL??'http://localhost:4100'));
