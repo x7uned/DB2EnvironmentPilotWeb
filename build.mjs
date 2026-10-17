@@ -1,1 +1,8 @@
-import {mkdir,readFile,writeFile} from 'node:fs/promises';await mkdir('dist',{recursive:true});await writeFile('dist/index.html',(await readFile('index.html','utf8')).replaceAll('http://localhost:4100',process.env.API_URL??'http://localhost:4100'));
+import {mkdir, cp} from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+
+const root = path.dirname(fileURLToPath(import.meta.url));
+const output = path.join(root, 'dist');
+await mkdir(output, {recursive: true});
+await Promise.all(['index.html', 'app.mjs'].map(file => cp(path.join(root, file), path.join(output, file))));
