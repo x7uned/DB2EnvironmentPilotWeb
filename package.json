@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
-    "test": "node --test test.mjs",
+    "test": "node --test test.mjs proxy.test.mjs",
     "build": "node build.mjs"
   }
 }
